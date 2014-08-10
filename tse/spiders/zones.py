@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from urlparse import urljoin
 import scrapy
-from ..items import StateItem
+from ..items import StateItem, ZoneItem
 
 class ZonesSpider(scrapy.Spider):
     name = "zones"
@@ -16,10 +16,22 @@ class ZonesSpider(scrapy.Spider):
                 for n in xrange(1, 29))
 
     def parse_state(self, response):
-        item = StateItem()
-        item['state'] = response.css(
+        state = StateItem()
+        state['state'] = response.css(
             '.t15RegionHeader::text').extract()[0].split('-')[-1].strip()
-        item['file_urls'] = [urljoin(
+        state['file_urls'] = [urljoin(
             response.url,
             response.css('span.left a::attr(href)').extract()[0])]
-        return item
+
+        yield state
+
+        for row in response.css('div[id] tr')[1:-1]:
+            zone = ZoneItem()
+            zone['state'] = state['state']
+            zone['number'] = row.xpath('./td[1]/text()').extract()[0]
+            zone['code'] = row.xpath('./td[2]/text()').extract()[0]
+            zone['address'] = row.xpath('./td[3]/text()').extract()[0]
+            zone['cep'] = row.xpath('./td[4]/text()').extract()[0]
+            zone['neighborhood'] = row.xpath('./td[5]/text()').extract()[0]
+            zone['city'] = row.xpath('./td[6]/text()').extract()[0]
+            yield zone

@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
 
@@ -12,3 +6,12 @@ class StateItem(scrapy.Item):
     state = scrapy.Field()
     file_urls = scrapy.Field()
     files = scrapy.Field()
+
+class ZoneItem(scrapy.Item):
+    state = scrapy.Field()
+    number = scrapy.Field()
+    code = scrapy.Field()
+    address = scrapy.Field()
+    cep = scrapy.Field()
+    neighborhood = scrapy.Field()
+    city = scrapy.Field()
