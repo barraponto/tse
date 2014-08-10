@@ -10,5 +10,8 @@ NEWSPIDER_MODULE = 'tse.spiders'
 ITEM_PIPELINES = {'tse.pipelines.StatePipeline'}
 FILES_STORE = os.path.join(PROJECT_ROOT, 'files')
 
+FEED_URI = os.path.join(PROJECT_ROOT, 'results.json')
+FEED_FORMAT = 'json'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tse (+http://www.yourdomain.com)'
