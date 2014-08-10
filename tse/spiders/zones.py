@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from urlparse import urljoin
 import scrapy
-from ..items import ZoneItem
+from ..items import StateItem
 
 class ZonesSpider(scrapy.Spider):
     name = "zones"
@@ -16,9 +16,9 @@ class ZonesSpider(scrapy.Spider):
                 for n in xrange(1, 29))
 
     def parse_state(self, response):
-        item = ZoneItem()
+        item = StateItem()
         item['state'] = response.css(
-            '.t15RegionHeader::text').extract()[0].split('-')[-1]
+            '.t15RegionHeader::text').extract()[0].split('-')[-1].strip()
         item['file_urls'] = [urljoin(
             response.url,
             response.css('span.left a::attr(href)').extract()[0])]

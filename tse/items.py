@@ -8,7 +8,7 @@
 import scrapy
 
 
-class ZoneItem(scrapy.Item):
+class StateItem(scrapy.Item):
     state = scrapy.Field()
     file_urls = scrapy.Field()
     files = scrapy.Field()
