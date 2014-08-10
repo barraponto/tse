@@ -8,7 +8,6 @@
 import scrapy
 
 
-class TseItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class ZoneItem(scrapy.Item):
+    state = scrapy.Field()
+    excel = scrapy.Field()
