@@ -10,4 +10,5 @@ import scrapy
 
 class ZoneItem(scrapy.Item):
     state = scrapy.Field()
-    excel = scrapy.Field()
+    file_urls = scrapy.Field()
+    files = scrapy.Field()

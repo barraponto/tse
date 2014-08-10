@@ -19,7 +19,7 @@ class ZonesSpider(scrapy.Spider):
         item = ZoneItem()
         item['state'] = response.css(
             '.t15RegionHeader::text').extract()[0].split('-')[-1]
-        item['excel'] = urljoin(
+        item['file_urls'] = [urljoin(
             response.url,
-            response.css('span.left a::attr(href)').extract()[0])
+            response.css('span.left a::attr(href)').extract()[0])]
         return item

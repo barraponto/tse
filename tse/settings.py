@@ -12,6 +12,8 @@ BOT_NAME = 'tse'
 
 SPIDER_MODULES = ['tse.spiders']
 NEWSPIDER_MODULE = 'tse.spiders'
+ITEM_PIPELINES = {'scrapy.contrib.pipeline.files.FilesPipeline'}
+FILES_STORE = 'files'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tse (+http://www.yourdomain.com)'
