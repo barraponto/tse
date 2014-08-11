@@ -9,6 +9,7 @@ SPIDER_MODULES = ['tse.spiders']
 NEWSPIDER_MODULE = 'tse.spiders'
 ITEM_PIPELINES = {'tse.pipelines.StatePipeline'}
 FILES_STORE = os.path.join(PROJECT_ROOT, 'files')
+CONCURRENT_REQUESTS = 1
 
 FEED_URI = os.path.join(PROJECT_ROOT, 'results.json')
 FEED_FORMAT = 'json'
